@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 
-	"github.com/fofow/backend-go/model"
+	"github.com/fofow/backend-go/internal/model"
 )
 
 func (s *service) UpdateAttendance(ctx context.Context, uuid string) (res model.GetDataSinarmasResponse, err error) {
