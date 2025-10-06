@@ -1,0 +1,45 @@
+.go-cache:
+  variables:
+    GOPATH: $CI_PROJECT_DIR/.go
+  before_script:
+    - mkdir -p .go
+    - ls -ltr
+    - echo $CI_COMMIT_SHORT_SHA
+    - export BUILD_NAME=$(date +%s)
+    - echo $BUILD_NAME
+    - apt-get update -qq && apt-get install -y -qq sshpass
+    - export CI_PORT=$[ $RANDOM % 4000 + 1000 ]
+    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client wget gnupg -y )'
+    - wget -qO- https://get.docker.com/gpg | apt-key add -
+    - eval $(ssh-agent -s)
+    - mkdir -p ~/.ssh
+    - touch ~/.ssh/config
+    - touch ~/.ssh/known_hosts
+    - chmod -R 400 ~/.ssh
+    - echo $TARGET_SERVER_SECRET_KEY_BASE64 | base64 -d -i > ~/.ssh/id_rsa
+    - chmod 700 ~/.ssh && chmod 600 ~/.ssh/*
+    - '[[ -f /.dockerinit ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  cache:
+    paths:
+      - .go/pkg/mod/
+
+variables:
+  OUTPUT_NAME: __bin__/$CI_PROJECT_NAME
+
+stages:
+  - build
+
+build:
+  image: golang:1.21.6
+  stage: build
+  extends: .go-cache
+  script:
+    - echo $CI_PORT
+    - make static
+    - cd build/
+    - sshpass scp -P $PORT_SSH -o StrictHostKeyChecking=no -r ./ $USERNAME_SSH@$HOST_SSH:/home/$USERNAME_SSH/golangku/popow
+    - sshpass ssh -p $PORT_SSH -o StrictHostKeyChecking=no $USERNAME_SSH@$HOST_SSH "cd /home/$USERNAME_SSH/golangku/popow && pmgo stop popow-api"
+    - sshpass ssh -p $PORT_SSH -o StrictHostKeyChecking=no $USERNAME_SSH@$HOST_SSH "cd /home/$USERNAME_SSH/golangku/popow && pmgo delete popow-api"
+    - sshpass ssh -p $PORT_SSH -o StrictHostKeyChecking=no $USERNAME_SSH@$HOST_SSH "cd /home/$USERNAME_SSH/golangku/popow && pmgo start /home/$USERNAME_SSH/golangku/popow/${BUILD_NAME} popow-api TRUE"
+  only:
+    - main
