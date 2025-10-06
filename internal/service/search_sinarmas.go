@@ -9,7 +9,7 @@ import (
 
 	"github.com/boombuler/barcode"
 	"github.com/boombuler/barcode/qr"
-	"gitlab.com/msstoci/popow-api/internal/model"
+	"github.com/fofow/backend-go/internal/model"
 )
 
 func (s *service) SearchSinarmas(ctx context.Context, input *model.SearchSinarmasRequest) (res model.SearchSinarmasResponse, err error) {

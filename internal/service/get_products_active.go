@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 
-	"gitlab.com/msstoci/popow-api/internal/model"
+	"github.com/fofow/backend-go/internal/model"
 )
 
 func (s *service) GetProductsActive(ctx context.Context) (products []model.Product, err error) {

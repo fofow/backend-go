@@ -1,4 +1,4 @@
-module gitlab.com/msstoci/popow-api
+module github.com/fofow/backend-go
 
 go 1.21.6
 

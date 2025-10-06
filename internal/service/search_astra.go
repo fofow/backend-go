@@ -9,7 +9,7 @@ import (
 
 	"github.com/boombuler/barcode"
 	"github.com/boombuler/barcode/qr"
-	"gitlab.com/msstoci/popow-api/internal/model"
+	"github.com/fofow/backend-go/internal/model"
 )
 
 func (s *service) SearchAstra(ctx context.Context, input *model.SearchAstraRequest) (res model.SearchAstraResponse, err error) {

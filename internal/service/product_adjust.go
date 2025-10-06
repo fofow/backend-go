@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 
-	"gitlab.com/msstoci/popow-api/internal/model"
+	"github.com/fofow/backend-go/internal/model"
 )
 
 func (s *service) ProductAdjust(ctx context.Context, product model.Product) (err error) {

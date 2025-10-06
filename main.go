@@ -5,10 +5,10 @@ import (
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"gitlab.com/msstoci/popow-api/internal/handler"
-	"gitlab.com/msstoci/popow-api/internal/repository"
-	"gitlab.com/msstoci/popow-api/internal/service"
-	"gitlab.com/msstoci/popow-api/pkg/database"
+	"github.com/fofow/backend-go/internal/handler"
+	"github.com/fofow/backend-go/internal/repository"
+	"github.com/fofow/backend-go/internal/service"
+	"github.com/fofow/backend-go/pkg/database"
 )
 
 func main() {

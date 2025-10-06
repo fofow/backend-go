@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"gitlab.com/msstoci/popow-api/internal/service"
+	"github.com/fofow/backend-go/internal/service"
 )
 
 type Handler struct {

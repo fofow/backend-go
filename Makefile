@@ -7,12 +7,12 @@ PORT ?= 8080
 
 current_dir = $(shell pwd)
 
-ENVS := GO_PRIVATE=gitlab.com/msstoci/ CGO_ENABLED=0 GOOS=linux GODEBUG=amd64
+ENVS := GO_PRIVATE=github.com/fofow/ CGO_ENABLED=0 GOOS=linux GODEBUG=amd64
 FLAGS := -tags=go_json,netgo,nomsgpack -ldflags='-s -w -extldflags "-static"'
 
 
 $(BIN):
-	git config --global url."git@gitlab.com:".insteadOf "https://gitlab.com/"
+	git config --global url."git@github.com:".insteadOf "https://github.com/"
 	mkdir -p build/
 	go mod tidy 
 	# $(ENVS) go build $(FLAGS) -o $(BIN)

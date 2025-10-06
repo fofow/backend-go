@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 
-	"gitlab.com/msstoci/popow-api/internal/model"
+	"github.com/fofow/backend-go/internal/model"
 )
 
 func (s *service) UpdateAttendanceAstra(ctx context.Context, uuid string) (res model.GetDataAstraResponse, err error) {

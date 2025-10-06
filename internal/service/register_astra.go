@@ -13,7 +13,7 @@ import (
 	"github.com/boombuler/barcode/qr"
 	"github.com/google/uuid"
 	"github.com/sirupsen/logrus"
-	"gitlab.com/msstoci/popow-api/internal/model"
+	"github.com/fofow/backend-go/internal/model"
 	"gopkg.in/gomail.v2"
 )
 

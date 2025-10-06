@@ -10,8 +10,8 @@ import (
 	"github.com/boombuler/barcode"
 	"github.com/boombuler/barcode/qr"
 	"github.com/sirupsen/logrus"
-	"gitlab.com/msstoci/popow-api/internal/model"
-	"gitlab.com/msstoci/popow-api/internal/repository"
+	"github.com/fofow/backend-go/internal/model"
+	"github.com/fofow/backend-go/internal/repository"
 )
 
 type Service interface {

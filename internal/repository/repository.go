@@ -3,8 +3,8 @@ package repository
 import (
 	"context"
 
-	"gitlab.com/msstoci/popow-api/internal/model"
-	"gitlab.com/msstoci/popow-api/pkg/database"
+	"github.com/fofow/backend-go/internal/model"
+	"github.com/fofow/backend-go/pkg/database"
 )
 
 type repository struct {
